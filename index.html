@@ -1,0 +1,79 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <h1>Rock, Paper, Scissors!</h1>
+        <h2>Open the console (ctrl/cmd+shift+I) and type "game()" to play!</h2>
+        <script>
+        //Variables
+        let playerScore = 0;
+        let computerScore = 0;
+        let draws = 0;
+        let result = '';
+        let computerSelection;
+        const computerAnswer = ["rock", "paper", "scissors"];
+        let playerSelection;
+
+        //Computers Play
+        function computerPlay(){
+            computerSelection = computerAnswer[Math.floor(Math.random() * 3)]
+        }
+        //One Round
+        function playRound(){
+            computerPlay();
+            playerSelection = prompt("Chose: Rock, Paper, or Scissors.", "Rock").toLowerCase();
+            console.log("Computer chose: ", computerSelection);
+            console.log("You chose: ", playerSelection);
+            if (computerSelection === playerSelection){
+                result = "Draw";
+                draws++;
+                return (result +"\nYour Score = " + playerScore +"\nComputer Score = " + computerScore +"\nDraws: " + draws)
+            }
+            else if(computerSelection == "rock" && playerSelection == "scissors"){
+                result = "Computer Wins";
+                computerScore++;
+                return (result +"\nYour Score = " + playerScore +"\nComputer Score = " + computerScore +"\nDraws: " + draws)
+            }
+            else if(computerSelection == "paper" && playerSelection == "rock"){
+                result = "Computer Wins";
+                computerScore++;
+                return (result +"\nYour Score = " + playerScore +"\nComputer Score = " + computerScore +"\nDraws: " + draws)
+            }
+            else if(computerSelection == "scissors" && playerSelection == "paper"){
+                result = "Computer Wins";
+                computerScore++;
+                return (result +"\nYour Score = " + playerScore +"\nComputer Score = " + computerScore +"\nDraws: " + draws)
+            }
+            else {
+                result = "You Win!";
+                playerScore++;
+                return (result +"\nYour Score = " + playerScore +"\nComputer Score = " + computerScore +"\nDraws: " + draws)
+            }
+        
+
+        }
+        function game(){
+            playerScore = 0;
+            computerScore = 0;
+            draws = 0;
+            console.log(playRound())
+            console.log(playRound())
+            console.log(playRound())
+            console.log(playRound())
+            console.log(playRound())
+            if (playerScore > computerScore){
+                return ("Player has won!")
+            }
+            else if (computerScore > playerScore){
+                return ("Computer has won!")
+            }
+            else {
+                return ("The game was a draw.")
+            }
+        }
+        </script>
+    </body>
+</html>
